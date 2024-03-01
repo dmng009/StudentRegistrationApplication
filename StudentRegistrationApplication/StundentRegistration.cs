@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,20 +17,31 @@ namespace StudentRegistrationApplication
         public StundentRegistration()
         {
             InitializeComponent();
-           
+            string[] array = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
             for (int i = 1; i <= 31; i++)
             {
                 comboBox1.Items.Add(i);       
             }
             
-            for(int i = 1; i <= 12; i++)
-            {
-                comboBox2.Items.Add(i);
+            foreach (string month in array) { 
+
+                comboBox2.Items.Add(month);
             }
 
             for( int i = 1900;  i <= 2024; i++)
             {
                 comboBox3.Items.Add(i);
+            }
+
+            ArrayList programs = new ArrayList();
+            programs.Add("Bachelor of Science in Computer Science");
+            programs.Add("Bachelor of Science in Information Technology");
+            programs.Add("Bachelor of Science in Information Systems");
+            programs.Add("Bachelor of Science in Computer Engineering");
+
+            foreach(string programList in programs)
+            {
+                comboBox4.Items.Add(programList);
             }
         }
 
@@ -77,6 +89,7 @@ namespace StudentRegistrationApplication
         {
             string lastName, firstName, middleName;
             string gender = "";
+            string program;
             lastName = textBox1.Text;
             firstName = textBox2.Text;
             middleName = textBox3.Text;
@@ -93,7 +106,8 @@ namespace StudentRegistrationApplication
 
             MessageBox.Show("Student name: " + firstName + " " + middleName + " " + lastName + "\n" +
                             "Gender: " + gender + "\n" +
-                            "Date of birth: " + comboBox1.Text + "/" + comboBox2.Text + "/" + comboBox3.Text);
+                            "Date of birth: " + comboBox1.Text + "/" + comboBox2.Text + "/" + comboBox3.Text + "\n" +
+                            "Program: " + comboBox4.Text);
                            
 
         }
